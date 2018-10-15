@@ -15,7 +15,7 @@ function BurpCreateList {
 if [ $(find /etc/zabbix -type f -name "burp_list.txt" -mmin +180) ] && [ ! -f /etc/zabbix/burp_list.lock ]; then
 	touch /etc/zabbix/burp_list.lock
 	burp -a S | grep -v "burp status" | sed 's/^ *//' > /etc/zabbix/burp_list.tmp && \
-	rm -f /etc/zabbix/burp_list.lock || exit 1
+	rm -f /etc/zabbix/burp_list.lock || { rm -f /etc/zabbix/burp_list.lock ; exit 1; }
 	mv -f /etc/zabbix/burp_list.tmp /etc/zabbix/burp_list.txt
 fi
 }

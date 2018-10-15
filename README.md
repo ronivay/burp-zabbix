@@ -57,7 +57,7 @@ Template has some some default values which are defined as MACRO.
 
 `{$BACKUP_OLDER_THAN}` is set to 129600seconds which equals to 1days 12hours. Triggers support context macro, so you can defined different macros for different clients if you wish. In that case add a new macro to your host as follows:
 
-`{$DISK_USAGE_AVG:burp-client-name}` and set a value that you like.
+`{$BACKUP_OLDER_THAN:burp-client-name}` and set a value that you like.
 
 Missing backup trigger is defined so that if value for client is -126671 (-1day,11hours,11seconds, this is what the burp.sh will return if backup doesn't exist) for 129600 (1 and a half days) straight it triggers the alarm.
 
