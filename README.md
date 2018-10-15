@@ -30,7 +30,7 @@ Check https://burp.grke.org/docs/monitor.html
 ```
 git clone https://github.com/ronivay/burp-zabbix /etc/zabbix/burp-zabbix
 ```
-- Edit you zabbix agent configuration and add
+- Edit your zabbix agent configuration and add
 ```
 Include=/etc/zabbix/burp-zabbix/burp.conf
 ```
@@ -51,15 +51,15 @@ Zabbix agent part is now done, we can move to our zabbix-server
 
 * Choose the .xml file and hit import
 
-Now we should have a new template called `Template burp backup` which we can add to our hosts.
+Now we should have a new template called `Template burp backup` which we can add to our host.
 
-Template has some some default values which are defined as MACRO.
+Template has some default values which are defined as MACRO.
 
 `{$BACKUP_OLDER_THAN}` is set to 129600seconds which equals to 1days 12hours. Triggers support context macro, so you can defined different macros for different clients if you wish. In that case add a new macro to your host as follows:
 
 `{$BACKUP_OLDER_THAN:burp-client-name}` and set a value that you like.
 
-Missing backup trigger is defined so that if value for client is -126671 (-1day,11hours,11seconds, this is what the burp.sh will return if backup doesn't exist) for 129600 (1 and a half days) straight it triggers the alarm.
+Missing backup trigger is defined so that if value for client is -126671 (-1day,11hours,11seconds, this is what the burp.sh will return if backup doesn't exist) for 129600seconds (1 and a half days) straight it triggers the alarm.
 
 #### Tips
 
