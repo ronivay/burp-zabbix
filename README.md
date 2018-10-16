@@ -59,7 +59,7 @@ Template has some default values which are defined as MACRO.
 
 `{$BACKUP_OLDER_THAN:burp-client-name}` and set a value that you like.
 
-Missing backup trigger is defined so that if value for client is -126671 (-1day,11hours,11seconds, this is what the burp.sh will return if backup doesn't exist) for 129600seconds (1 and a half days) straight it triggers the alarm.
+Missing backup trigger is defined so that if sum value for client is 0this is what the burp.sh will return if backup doesn't exist) for 129600seconds (1 and a half days) straight it triggers the alarm.
 
 #### Tips
 

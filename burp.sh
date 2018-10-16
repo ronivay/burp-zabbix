@@ -44,8 +44,7 @@ client="$1"
 
 # if latest backup status is null/empty print negative number and exit
 if [[ $(echo "$burp_list" | awk -v c="^$client$" '$1 ~ c' | awk '{print $5}') == "never" ]] || [[ $(echo "$burp_list" | awk -v c="^$client$" '$1 ~ c' | awk '{print $5}') == "" ]]; then
-	# this is -1d11h11s
-	echo "-126671"
+	echo "0"
 	exit
 fi
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2018-10-15T07:39:08Z</date>
+    <date>2018-10-16T07:06:31Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -73,7 +73,7 @@
                             <history>90d</history>
                             <trends>365d</trends>
                             <status>0</status>
-                            <value_type>0</value_type>
+                            <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>s</units>
                             <snmpv3_contextname/>
@@ -126,7 +126,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Template burp backup:burp.check[{#BURPCLIENT}].last(,129600)}=-126671</expression>
+                            <expression>{Template burp backup:burp.check[{#BURPCLIENT}].sum(129600)}=0</expression>
                             <recovery_mode>0</recovery_mode>
                             <recovery_expression/>
                             <name>There is no backup for client {#BURPCLIENT}</name>
@@ -157,7 +157,7 @@
                             <dependencies>
                                 <dependency>
                                     <name>There is no backup for client {#BURPCLIENT}</name>
-                                    <expression>{Template burp backup:burp.check[{#BURPCLIENT}].last(,129600)}=-126671</expression>
+                                    <expression>{Template burp backup:burp.check[{#BURPCLIENT}].sum(129600)}=0</expression>
                                     <recovery_expression/>
                                 </dependency>
                             </dependencies>
