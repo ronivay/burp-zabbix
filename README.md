@@ -55,11 +55,11 @@ Now we should have a new template called `Template burp backup` which we can add
 
 Template has some default values which are defined as MACRO.
 
-`{$BACKUP_OLDER_THAN}` is set to 129600seconds which equals to 1days 12hours. Triggers support context macro, so you can defined different macros for different clients if you wish. In that case add a new macro to your host as follows:
+`{$BACKUP_OLDER_THAN}` is set to 129600seconds which equals to 1days 12hours. Triggers support context macro, so you can define different macros for different clients if you wish. In that case add a new macro to your host as follows:
 
 `{$BACKUP_OLDER_THAN:burp-client-name}` and set a value that you like.
 
-Missing backup trigger is defined so that if sum value for client is 0this is what the burp.sh will return if backup doesn't exist) for 129600seconds (1 and a half days) straight it triggers the alarm.
+Missing backup trigger is defined so that if sum value for client is 0 (this is what the burp.sh will return if backup doesn't exist) for 129600seconds (1 and a half days) straight it triggers the alarm.
 
 #### Tips
 
