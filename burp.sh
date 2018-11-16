@@ -11,8 +11,8 @@ burp_list=$(cat /etc/zabbix/burp_list.txt)
 
 function BurpCreateList {
 
-# create new list every 3hours, not every time this script runs. querying burp takes a while, so maybe move this task as cronjob if causing issues or incorrect data.
-if [ $(find /etc/zabbix -type f -name "burp_list.txt" -mmin +180) ] && [ ! -f /etc/zabbix/burp_list.lock ]; then
+# create new list every 1hours, not every time this script runs. querying burp takes a while, so maybe move this task as cronjob if causing issues or incorrect data.
+if [ $(find /etc/zabbix -type f -name "burp_list.txt" -mmin +60) ] && [ ! -f /etc/zabbix/burp_list.lock ]; then
 	touch /etc/zabbix/burp_list.lock
 	burp -a S | grep -v "burp status" | sed 's/^ *//' > /etc/zabbix/burp_list.tmp && \
 	rm -f /etc/zabbix/burp_list.lock || { rm -f /etc/zabbix/burp_list.lock ; exit 1; }
