@@ -51,7 +51,18 @@ Zabbix agent part is now done, we can move to our zabbix-server
 
 * Choose the .xml file and hit import
 
-Now we should have a new template called `Template burp backup` which we can add to our host.
+Now we should have a new template called `Template burp backup` which we can add to our host that does the monitoring.
+
+Template has a discovery rule which automatically creates monitoring items and triggers	for all	clients	found from burp	server. Discovery rule uses regex to filter out unwanted clients (for example our monitoring client). To add one:
+
+`Administration` -> `General` -> choose `regular expressions` from drop-down menu -> hit `New regular expression`
+
+Name: Burp clients for discovery
+! name is important since it's the one defined in the template !
+
+Expression type: Result is FALSE
+Expression: ^clientname$
+Expression(multiple clients): ^(clientname1|clientname2)$ 
 
 Template has some default values which are defined as MACRO.
 
@@ -68,6 +79,3 @@ burp.sh will create a new burp_list.txt every 1hour. You have an option to switc
 ```
 */15 * * * * /etc/zabbix/burp-zabbix/burp.sh cron
 ```
-
-
-
