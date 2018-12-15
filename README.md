@@ -58,11 +58,14 @@ Template has a discovery rule which automatically creates monitoring items and t
 `Administration` -> `General` -> choose `regular expressions` from drop-down menu -> hit `New regular expression`
 
 Name: Burp clients for discovery
+
 ! name is important since it's the one defined in the template !
 
 Expression type: Result is FALSE
-Expression: ^clientname$
-Expression(multiple clients): ^(clientname1|clientname2)$ 
+
+Expression: `^clientname$`
+
+Expression(multiple clients): `^(clientname1|clientname2)$`
 
 Template has some default values which are defined as MACRO.
 
