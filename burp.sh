@@ -2,8 +2,8 @@
 
 CRON=false
 
-# create new list of clients/backups if doesn't exist. might cause zabbix to timeout since querying burp can take a while.
-if [ ! -f /etc/zabbix/burp_list.txt ]; then
+# create new list of clients/backups if doesn't exist/is empty. might cause zabbix to timeout since querying burp can take a while.
+if [ ! -s /etc/zabbix/burp_list.txt ]; then
         burp -a S | grep -v "burp status" | sed 's/^ *//' > /etc/zabbix/burp_list.txt
 fi
 
