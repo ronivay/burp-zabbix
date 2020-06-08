@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CRON=false
+CLIENTDIR="/etc/burp/clientconfdir"
 
 # create new list of clients/backups if doesn't exist/is empty. might cause zabbix to timeout since querying burp can take a while.
 if [ ! -s /etc/zabbix/burp_list.txt ]; then
@@ -28,7 +29,10 @@ echo -e "{\n"
 echo -e "\"data\":[\n"
 
 for burp_client in "${burp_clients[@]}"; do
-	RESULT+=$(echo -e "\n{\n\"{#BURPCLIENT}\": \"$burp_client\"\n},")
+	# don't discover clients created less than 24hours ago
+	if [[ $(find $CLIENTDIR -mindepth 1 -maxdepth 1 -ctime +1 -name "$burp_client") ]]; then
+		RESULT+=$(echo -e "\n{\n\"{#BURPCLIENT}\": \"$burp_client\"\n},")
+	fi
 done
 
 JSON=$(echo "$RESULT" | sed '$s/,$//')
