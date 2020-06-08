@@ -53,7 +53,7 @@ Zabbix agent part is now done, we can move to our zabbix-server
 
 Now we should have a new template called `Template burp backup` which we can add to our host that does the monitoring.
 
-Template has a discovery rule which automatically creates monitoring items and triggers	for all	clients	found from burp	server. Discovery rule uses regex to filter out unwanted clients (for example our monitoring client). To add one:
+Template has a discovery rule which automatically creates monitoring items and triggers	for all	clients	found from burp	server. If you're monitoring clients from burp server directly, script has an option to set CLIENTDIR variable which delays discovery 24hours for new clients to prevent unwanted "no backup" trigger.Discovery rule uses regex to filter out unwanted clients (for example our monitoring client). To add one:
 
 `Administration` -> `General` -> choose `regular expressions` from drop-down menu -> hit `New regular expression`
 
